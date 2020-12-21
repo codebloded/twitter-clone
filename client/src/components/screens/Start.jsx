@@ -4,7 +4,7 @@ import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import SmsIcon from '@material-ui/icons/Sms';
 import GroupIcon from '@material-ui/icons/Group';
 import { Link } from "react-router-dom";
-
+import SignUp from './SignUp';
 const useStyles = makeStyles((theme) => ({
     box: {
         display: 'flex',
@@ -34,11 +34,21 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Start = () => {
+    const [open, setOpen] = React.useState(false);
+    
+    const handleOpen = () => {
+      setOpen(true);
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
     const classes = useStyles();
     return (
         <div className={classes.box}>
 
             <div className='App-header'>
+            <SignUp opn ={handleOpen} cl={handleClose} openx={open}/>
                 <Container maxWidth="lg">
                     <div>
                         <div className={classes.box}>
@@ -68,9 +78,10 @@ const Start = () => {
                     <br></br>
                     <p className={classes.txt}>Join twitter today</p>
                     <div className={classes.btn}>
-                        <Button variant="contained" color='primary' className={classes.button}>Sign up</Button>
+                        <Button variant="contained" color='primary' className={classes.button} onClick={handleOpen}>Sign up</Button>
                        <Link to="/login" className={classes.link}> <Button variant="contained" color="primary"className={classes.button} >Login</Button></Link>
                     </div>
+                  
                 </Container>
             </div>
         </div>
