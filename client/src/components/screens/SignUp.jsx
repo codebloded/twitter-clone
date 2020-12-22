@@ -83,7 +83,7 @@ export default function SignUp(props) {
                             </Typography>
                             <form noValidate autoComplete="off">
                                 <Container className={classes.form} style={{ textAlign: 'center'}}>
-                                    <TextField id='standard-basic'  label='Name' />
+                                    <TextField style={{color:'white'}} id='standard-basic'  label='Name' />
                                     <br></br>
                                     <TextField id='standard-basic'  label='Email' />
                                     <br></br>
@@ -94,6 +94,7 @@ export default function SignUp(props) {
                                     <br></br>
                                    
                                         <TextField
+                                        style={{color:'white'}}
                                             id="date"
                                             label="Birthday"
                                             color='secondary'
