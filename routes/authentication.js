@@ -5,15 +5,16 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const router = express.Router()
 const {JWT_SECRET} = require('../config/dev')
+const requireLogin = require('../middleware/requireLogin');
 // ==================SIGNUP ROUTE=============
-router.get('/t', (req, res)=>{
+router.get('/protected',requireLogin, (req, res)=>{
     res.send({message:"Hemllo"})
 });
 
 router.post('/signup', async(req,res)=>{
     req.header('Content-Type', 'application/json');
-    const{name,email,password} = req.body;
-    if(!name || !email || !password ){
+    const{name,email,password, dob} = req.body;
+    if(!name || !email || !password || !dob){
         return res.json({error:"Please fill all the fields"});
     }
     try {
@@ -26,14 +27,16 @@ router.post('/signup', async(req,res)=>{
             name,
             email,
             password:hashPassword,
+            dob
         });
-        user.save().then(user=>{
+        user.save()
+        .then(user=>{
             res.json({message:"User saved sucessfully!"});
         }).catch(err=>{
             res.json({error:err});
         })
     } catch (error) {
-        res.json({err:error});
+        res.json({error});
     }
 });
 
@@ -55,8 +58,8 @@ router.post('/login',async(req, res)=>{
         }else{
             //JSON -Token-
             const token =  JWT.sign({_id:savedUser._id},JWT_SECRET);
-            const {_id, name, email}  = savedUser;
-            res.status(200).json({token,user:{_id, name, email}});
+            const {_id, name, email, dob}  = savedUser;
+            res.status(200).json({token,user:{_id, name, email ,dob}});
         }
         
     } catch (error) {

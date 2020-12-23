@@ -12,11 +12,11 @@ const userSchema = moongose.Schema({
     password:{
         type:String,
         required:true,
+    },
+    dob:{
+        type:Date,
+        required:true
     }
-    // dob:{
-    //     type:Date,
-    //     required:true
-    // }
 })
 
 const User =  moongose.model('User', userSchema);

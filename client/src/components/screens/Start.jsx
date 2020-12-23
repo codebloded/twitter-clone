@@ -5,6 +5,7 @@ import SmsIcon from '@material-ui/icons/Sms';
 import GroupIcon from '@material-ui/icons/Group';
 import { Link } from "react-router-dom";
 import SignUp from './SignUp';
+import Twitter from "@material-ui/icons/Twitter";
 const useStyles = makeStyles((theme) => ({
     box: {
         display: 'flex',
@@ -72,6 +73,7 @@ const Start = () => {
                     </div>
                 </Container>
                 <Container fixed >
+                <Twitter fontSize="large" color="inherit"/>
                     <Typography variant="h4" component="h2" className={classes.txt}>
                         See what's happening in the world right now
        </Typography>

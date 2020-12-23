@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose')
 const _HOSTNAME = 'localhost';
 const {MONGOURI} = require('./config/dev');
+const cors = require('cors');
 const _PORT = '4000';
 const authentication = require('./routes/authentication');
 const app = express()
 
 app.use(express.json());
+app.use(cors());
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGOURI,({useNewUrlParser:true, useUnifiedTopology:true}), ()=>{
     console.log('Connect to mongodb');

@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { Button, Container, Paper, TextField, Typography } from '@material-ui/core';
+import { Button, Container, Paper, TextField, Typography,Snackbar, SnackbarContent } from '@material-ui/core';
+import {Alert, AlertTitle} from '@material-ui/lab/'
 import TwitterIcon from "@material-ui/icons/Twitter"
+import { useHistory } from 'react-router-dom';
 
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+          marginTop: theme.spacing(2),
+        },
+      },
     modal: {
         display: 'flex',
         alignItems: 'center',
@@ -56,6 +64,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp(props) {
+    const history = useHistory();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+    const [dob, setDOb] = useState();
+ 
+    const postCredentials = ()=>{
+            
+        if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+            <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={true}
+            autoHideDuration={600}
+            message="Note archived"
+          />
+            return
+        }
+        fetch("http://localhost:4000/signup",{
+            method:"post",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify({
+                name:name,
+                email:email,
+                password:password,
+                dob:dob
+            })
+        }).then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
   
     const classes = useStyles();
 
@@ -83,10 +129,13 @@ export default function SignUp(props) {
                             </Typography>
                             <form noValidate autoComplete="off">
                                 <Container className={classes.form} style={{ textAlign: 'center'}}>
-                                    <TextField style={{color:'white'}} id='standard-basic'  label='Name' />
+                                    <TextField style={{color:'white'}} onChange={(e)=>setName(e.target.value)} value={name} id='standard-basic'  label='Name' />
                                     <br></br>
-                                    <TextField id='standard-basic'  label='Email' />
+                                    <TextField id='standard-basic' value={email}  onChange={(e)=>setEmail(e.target.value)} label='Email' />
                                     <br></br>
+                                    <TextField id='standard-basic' type="password" onChange={(e)=>setPassword(e.target.value)} value={password} label='passowrd' />
+                                    <br></br>
+                                    
                                     <Typography variant="h6" component="h6" className={classes.txt}>
                                         Date of Birth.
                             </Typography>
@@ -99,14 +148,17 @@ export default function SignUp(props) {
                                             label="Birthday"
                                             color='secondary'
                                             type="date"
-                                            defaultValue="2017-05-24"
+                                            value={dob}
+                                            onChange={(e)=>setDOb(e.target.value)}
                                             className={classes.textField}
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
                                         />
                                 <br></br>
-                            <Button className={classes.btn} variant="contained" color="primary">Sign Up</Button>
+                            <Button className={classes.btn} variant="contained" 
+                            onClick={()=>postCredentials()}
+                            color="primary">Sign Up</Button>
                                 </Container>
                             </form>
                             <p style={{ textAlign: 'center'}}>Have an account?</p>
