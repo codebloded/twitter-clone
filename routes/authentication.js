@@ -41,11 +41,11 @@ router.post('/signup', async(req,res)=>{
 });
 
 // =============================LOGIN ROUTE=======================
-router.post('/login',async(req, res)=>{
+router.post('/login', async(req, res)=>{
     req.header('Content-Type', 'application/json');
     const{email, password} = req.body;
     if(!email || !password){
-        return res.status(402).json({error:"Please Fill all credentials"});
+        return res.status(401).json({error:"Please Fill all credentials"});
     }
     try {
         const savedUser = await User.findOne({email:email});
