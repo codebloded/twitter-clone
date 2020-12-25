@@ -1,5 +1,7 @@
 import React from 'react'
 import TweetBox from './TweetBox';
+import Tweets from './Tweets';
+import '../../../tweet.css'
 
 
 export default function Feeds(){
@@ -9,73 +11,18 @@ export default function Feeds(){
                 <h1>Home</h1>
             </div>
             <TweetBox/>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
-            <h5>hello world!</h5>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
+            <Tweets/>
 
         </div>
     )

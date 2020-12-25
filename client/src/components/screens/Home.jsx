@@ -17,8 +17,6 @@ const Home = ()=>{
            
             {/* Widgets */}
             <Widgets/>
-
-            {/* Tweets */}
         </div>
         </React.Fragment>
     )
