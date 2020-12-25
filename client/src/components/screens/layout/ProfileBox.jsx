@@ -16,7 +16,6 @@ export default function ProfileBox() {
                     <img src="https://avatars2.githubusercontent.com/u/48005711?s=460&u=abaa04acd2f5c5e72173ff7201ca4a1abcd7a509&v=4" />
 
                     <div>
-
                         <Button className="edit__btn" variant="contained">
                             Edit Image
                         </Button>
